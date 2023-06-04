@@ -1,0 +1,22 @@
+name: Quarkus GraalVM Native Image builds
+on: [push, pull_request]
+jobs:
+  build:
+    name: Quarkus Native Application on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.3.1'
+          java-version: '17'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: 'true'
+
+      - name: Build with Maven
+        run: mvn --batch-mode package -Pnative
