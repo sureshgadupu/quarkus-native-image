@@ -15,14 +15,14 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: sb3-native-image
-            asset_name: sb3-native-image-linux-amd64
+            artifact_name: quarkus-native-image
+            asset_name: quarkus-native-image-linux-amd64
           - os: windows-latest
-            artifact_name: sb3-native-image.exe
-            asset_name: sb3-native-image-windows-amd64.exe
+            artifact_name: quarkus-native-image.exe
+            asset_name: quarkus-native-image-windows-amd64.exe
           - os: macos-latest
-            artifact_name: sb3-native-image
-            asset_name: sb3-native-image-macos-amd64
+            artifact_name: quarkus-native-image
+            asset_name: quarkus-native-image-macos-amd64
 #          - os: linuxarm64
 #            artifact_name: sb3-native-image
 #            asset_name: sb3-native-image-linux-arm64
