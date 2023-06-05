@@ -17,12 +17,12 @@ jobs:
           - os: ubuntu-latest
             artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
             asset_name: quarkus-native-image-linux-amd64
-          - os: windows-latest
-            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner.exe
-            asset_name: quarkus-native-image-windows-amd64.exe
-          - os: macos-latest
-            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
-            asset_name: quarkus-native-image-macos-amd64
+#          - os: windows-latest
+#            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner.exe
+#            asset_name: quarkus-native-image-windows-amd64.exe
+#          - os: macos-latest
+#            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
+#            asset_name: quarkus-native-image-macos-amd64
 #          - os: linuxarm64
 #            artifact_name: sb3-native-image
 #            asset_name: sb3-native-image-linux-arm64
@@ -43,10 +43,13 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode package -Pnative
 
+      - name: list files in target folder
+        run: cd target && ls -lst
+
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: target/quarkus-native-image-1.0.0-SNAPSHOT-native-image-source-jar/${{ matrix.artifact_name }}
+          file: ./target/${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
