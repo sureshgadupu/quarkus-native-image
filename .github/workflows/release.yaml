@@ -23,12 +23,12 @@ jobs:
           - os: macos-latest
             artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
             asset_name: quarkus-native-image-macos-amd64
-          - os: linuxarm64
-#            artifact_name: sb3-native-image
-#            asset_name: sb3-native-image-linux-arm64
+#          - os: linuxarm64
+#            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
+#            asset_name: quarkus-native-image-linux-arm64
 #          - os: ['macOS','ARM64']
-#            artifact_name: sb3-native-image
-#            asset_name: sb3-native-image-macos-arm64
+#            artifact_name: quarkus-native-image-1.0.0-SNAPSHOT-runner
+#            asset_name: quarkus-native-image-macos-arm64
     steps:
       - uses: actions/checkout@v3
 
